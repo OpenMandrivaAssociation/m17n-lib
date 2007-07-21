@@ -1,11 +1,12 @@
-%define version	1.3.4
+%define version	1.4.0
 %define release	%mkrel 1
 
-%define m17n-db_version   1.3.4
+%define m17n-db_version   1.4.0
 %define libotf_version    0.9.5
 
 %define libname_orig lib%{name}
 %define libname %mklibname %{name} 0
+%define develname %mklibname -d %{name}
 
 Name:      m17n-lib
 Summary:   The m17n library is a multilingual text processing library
@@ -14,7 +15,7 @@ Release:   %{release}
 Group:     System/Internationalization
 License:   LGPL
 URL:       http://www.m17n.org/m17n-lib/index.html
-Source0:   %{name}-%{version}.tar.bz2
+Source0:   http://www.m17n.org/m17n-lib-download/%{name}-%{version}.tar.bz2
 Patch0:    m17n-lib-1.2.0-deps.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:        %{libname} = %{version}
@@ -52,14 +53,15 @@ Provides:   %{libname_orig} = %{version}-%{release}
 %description -n %{libname}
 m17n library.
 
-%package -n %{libname}-devel
+%package -n %{develname}
 Summary:    Headers of m17n for development
 Group:      Development/C
 Requires:   %{libname} = %{version}
 Provides:   %{name}-devel = %{version}-%{release}
 Provides:   %{libname_orig}-devel = %{version}-%{release}
+Obsoletes:  %{libname}-devel
 
-%description -n %{libname}-devel
+%description -n %{develname}
 Headers of %{name} for development.
 
 %prep
@@ -70,9 +72,9 @@ ln -s -f /usr/share/libtool/ltmain.sh ./ltmain.sh
 # (gb)
 # update built-in libtool 1.5 to system one so that it knows about
 # lib64 arches and nukes out extraneous RPATH accordingly.
-aclocal-1.8
-autoheader-2.5x
-automake-1.8 --gnu -a
+aclocal
+autoheader
+automake --gnu -a
 autoconf
 
 %build
@@ -92,7 +94,6 @@ rm -rf $RPM_BUILD_ROOT
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
-
 %files
 %defattr(-,root,root)
 %doc AUTHORS COPYING ChangeLog NEWS README
@@ -108,7 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 # (ut) SCIM/UIM open some symlinks
 %{_libdir}/lib*.so.*
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %doc COPYING
 %{_bindir}/m17n-config
@@ -118,5 +119,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.la
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*
-
-
