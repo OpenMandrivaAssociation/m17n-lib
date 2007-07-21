@@ -67,17 +67,9 @@ Headers of %{name} for development.
 %prep
 %setup -q
 %patch0 -p1 -b .deps
-ln -s -f /usr/share/libtool/ltmain.sh ./ltmain.sh
-
-# (gb)
-# update built-in libtool 1.5 to system one so that it knows about
-# lib64 arches and nukes out extraneous RPATH accordingly.
-aclocal
-autoheader
-automake --gnu -a
-autoconf
 
 %build
+./bootstrap.sh
 %configure2_5x
 %make
 
