@@ -17,7 +17,6 @@ License:   LGPL
 URL:       http://www.m17n.org/m17n-lib/index.html
 Source0:   http://www.m17n.org/m17n-lib-download/%{name}-%{version}.tar.bz2
 Patch0:    m17n-lib-1.2.0-deps.patch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:        %{libname} = %{version}
 
 # NOTE: medit and mdump require this font otherwise you get a SIGFPE
