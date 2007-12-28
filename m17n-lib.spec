@@ -1,7 +1,7 @@
-%define version	1.4.0
+%define version	1.5.0
 %define release	%mkrel 1
 
-%define m17n-db_version   1.4.0
+%define m17n-db_version   1.5.0
 %define libotf_version    0.9.5
 
 %define libname_orig lib%{name}
@@ -13,9 +13,9 @@ Summary:   The m17n library is a multilingual text processing library
 Version:   %{version}
 Release:   %{release}
 Group:     System/Internationalization
-License:   LGPL
+License:   LGPLv2+
 URL:       http://www.m17n.org/m17n-lib/index.html
-Source0:   http://www.m17n.org/m17n-lib-download/%{name}-%{version}.tar.bz2
+Source0:   http://www.m17n.org/m17n-lib-download/%{name}-%{version}.tar.gz
 Patch0:    m17n-lib-1.2.0-deps.patch
 Requires:        %{libname} = %{version}
 
@@ -65,7 +65,7 @@ Headers of %{name} for development.
 
 %prep
 %setup -q
-%patch0 -p1 -b .deps
+#%patch0 -p1 -b .deps
 
 %build
 ./bootstrap.sh
@@ -87,7 +87,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS README
 %{_bindir}/m17n-conv
 %{_bindir}/m17n-date
 %{_bindir}/m17n-dump
@@ -96,13 +96,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n %{libname}
 %defattr(-,root,root)
-%doc COPYING
 # (ut) SCIM/UIM open some symlinks
 %{_libdir}/lib*.so.*
 
 %files -n %{develname}
 %defattr(-,root,root)
-%doc COPYING
 %{_bindir}/m17n-config
 %multiarch %{multiarch_bindir}/m17n-config
 %{_includedir}/*
