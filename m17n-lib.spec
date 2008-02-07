@@ -1,7 +1,7 @@
-%define version	1.5.0
+%define version	1.5.1
 %define release	%mkrel 1
 
-%define m17n-db_version   1.5.0
+%define m17n-db_version   1.5.1
 %define libotf_version    0.9.5
 
 %define libname_orig lib%{name}
@@ -29,7 +29,7 @@ Requires:        fonts-ttf-freefont
 Requires:        m17n-db >= %{m17n-db_version}
 Requires:        libotf >= %{libotf_version}
 BuildRequires:   m17n-db-devel >= %{m17n-db_version}
-BuildRequires:   automake1.8 >= 1.8.5
+BuildRequires:   automake
 BuildRequires:   libxml2-devel, X11-devel
 BuildRequires:   freetype2-static-devel
 BuildRequires:   libgd-static-devel >= 2.0
