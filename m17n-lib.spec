@@ -71,7 +71,7 @@ Headers of %{name} for development.
 %build
 ./bootstrap.sh
 %configure2_5x
-%make
+make
 
 %install
 rm -rf $RPM_BUILD_ROOT
