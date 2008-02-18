@@ -9,7 +9,7 @@
 %define develname %mklibname -d %{name}
 
 Name:      m17n-lib
-Summary:   The m17n library is a multilingual text processing library
+Summary:   Multilingual text processing library
 Version:   %{version}
 Release:   %{release}
 Group:     System/Internationalization
