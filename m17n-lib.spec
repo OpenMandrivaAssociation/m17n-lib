@@ -1,7 +1,7 @@
 %define version	1.5.2
 %define release	%mkrel 1
 
-%define m17n-db_version   1.5.1
+%define m17n_db_version   1.5.1
 %define libotf_version    0.9.5
 
 %define libname_orig lib%{name}
@@ -26,9 +26,9 @@ Requires:        %{libname} = %{version}
 # --> the bug is rather in the library and should be handled there.
 Requires:        fonts-ttf-freefont
 
-Requires:        m17n-db >= %{m17n-db_version}
+Requires:        m17n-db >= %{m17n_db_version}
 Requires:        libotf >= %{libotf_version}
-BuildRequires:   m17n-db-devel >= %{m17n-db_version}
+BuildRequires:   m17n-db-devel >= %{m17n_db_version}
 BuildRequires:   automake
 BuildRequires:   libxml2-devel, X11-devel
 BuildRequires:   freetype2-static-devel
