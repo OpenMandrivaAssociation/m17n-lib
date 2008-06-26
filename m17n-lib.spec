@@ -1,5 +1,5 @@
-%define version	1.5.1
-%define release	%mkrel 3
+%define version	1.5.2
+%define release	%mkrel 1
 
 %define m17n-db_version   1.5.1
 %define libotf_version    0.9.5
@@ -34,7 +34,7 @@ BuildRequires:   libxml2-devel, X11-devel
 BuildRequires:   freetype2-static-devel
 BuildRequires:   libgd-static-devel >= 2.0
 BuildRequires:   libjpeg-static-devel
-BuildRequires:   libanthy-devel >= 6300d
+BuildRequires:   anthy-devel >= 6300d
 BuildRequires:   libotf-devel >= %{libotf_version}
 BuildRequires:   libfribidi-devel
 # (tv) for AM_GNU_GETTEXT:
