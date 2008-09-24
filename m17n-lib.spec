@@ -1,5 +1,5 @@
 %define version	1.5.2
-%define release	%mkrel 1
+%define release	%mkrel 2
 
 %define m17n_db_version   1.5.1
 %define libotf_version    0.9.5
@@ -16,7 +16,7 @@ Group:     System/Internationalization
 License:   LGPLv2+
 URL:       http://www.m17n.org/m17n-lib/index.html
 Source0:   http://www.m17n.org/m17n-lib-download/%{name}-%{version}.tar.gz
-Patch0:    m17n-lib-1.2.0-deps.patch
+Patch0:	m17n-lib-1.5.2-new-fribidi.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:        %{libname} = %{version}
 
@@ -66,7 +66,7 @@ Headers of %{name} for development.
 
 %prep
 %setup -q
-#%patch0 -p1 -b .deps
+%patch0 -p0
 
 %build
 ./bootstrap.sh
