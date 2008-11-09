@@ -1,5 +1,5 @@
 %define version	1.5.3
-%define release	%mkrel 1
+%define release	%mkrel 2
 
 %define m17n_db_version   1.5.1
 %define libotf_version    0.9.5
