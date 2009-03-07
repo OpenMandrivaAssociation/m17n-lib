@@ -1,11 +1,11 @@
-%define version	1.5.3
-%define release	%mkrel 2
+%define version	1.5.4
+%define release	%mkrel 1
 
 %define m17n_db_version   1.5.1
 %define libotf_version    0.9.5
 
-%define libname_orig lib%{name}
-%define libname %mklibname %{name} 0
+%define major 0
+%define libname %mklibname %{name} %{major}
 %define develname %mklibname -d %{name}
 
 Name:      m17n-lib
@@ -47,7 +47,6 @@ language.
 %package -n %{libname}
 Summary:    The m17n library
 Group:      System/Internationalization
-Provides:   %{libname_orig} = %{version}-%{release}
 
 %description -n %{libname}
 m17n library.
@@ -57,8 +56,8 @@ Summary:    Headers of m17n for development
 Group:      Development/C
 Requires:   %{libname} = %{version}
 Provides:   %{name}-devel = %{version}-%{release}
-Provides:   %{libname_orig}-devel = %{version}-%{release}
-Obsoletes:  %{libname}-devel
+Provides:   lib%{name}-devel = %{version}-%{release}
+Obsoletes:  %{_lib}m17n-lib0-devel
 
 %description -n %{develname}
 Headers of %{name} for development.
@@ -67,7 +66,6 @@ Headers of %{name} for development.
 %setup -q -n %name-%version
 
 %build
-./bootstrap.sh
 %configure2_5x
 make
 
@@ -100,7 +98,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n %{libname}
 %defattr(-,root,root)
 # (ut) SCIM/UIM open some symlinks
-%{_libdir}/lib*.so.*
+%{_libdir}/lib*.so.%{major}*
 
 %files -n %{develname}
 %defattr(-,root,root)
