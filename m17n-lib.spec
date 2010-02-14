@@ -1,5 +1,5 @@
 %define version	1.5.5
-%define release	%mkrel 1
+%define release	%mkrel 2
 
 %define m17n_db_version   1.5.1
 %define libotf_version    0.9.5
@@ -16,6 +16,7 @@ Group:     System/Internationalization
 License:   LGPLv2+
 URL:       http://www.m17n.org/m17n-lib/index.html
 Source0:   http://www.m17n.org/m17n-lib-download/%{name}-%{version}.tar.gz
+Patch0:    m17n-lib-1.5.5-drop-versioninfo-from-module.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:        %{libname} = %{version}
 
@@ -47,6 +48,7 @@ language.
 %package -n %{libname}
 Summary:    The m17n library
 Group:      System/Internationalization
+Conflicts:  %{develname} < 1.5.5-2
 
 %description -n %{libname}
 m17n library.
@@ -64,6 +66,7 @@ Headers of %{name} for development.
 
 %prep
 %setup -q -n %name-%version
+%patch0 -p0
 
 %build
 %configure2_5x
@@ -97,8 +100,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n %{libname}
 %defattr(-,root,root)
-# (ut) SCIM/UIM open some symlinks
-%{_libdir}/lib*.so.%{major}*
+%{_libdir}/libm17n*.so.%{major}*
+%{_libdir}/libm17n-X.so
+%{_libdir}/libm17n-gd.so
+%{_libdir}/libmimx-anthy.so
+%{_libdir}/libmimx-ispell.so
 
 %files -n %{develname}
 %defattr(-,root,root)
@@ -107,5 +113,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/*
 %{_libdir}/lib*.a
 %{_libdir}/lib*.la
-%{_libdir}/lib*.so
+%{_libdir}/libm17n.so
+%{_libdir}/libm17n-core.so
+%{_libdir}/libm17n-flt.so
+%{_libdir}/libm17n-gui.so
 %{_libdir}/pkgconfig/*
