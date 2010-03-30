@@ -1,5 +1,5 @@
-%define version	1.5.5
-%define release	%mkrel 2
+%define version	1.6.0
+%define release	%mkrel 1
 
 %define m17n_db_version   1.5.1
 %define libotf_version    0.9.5
@@ -16,7 +16,6 @@ Group:     System/Internationalization
 License:   LGPLv2+
 URL:       http://www.m17n.org/m17n-lib/index.html
 Source0:   http://www.m17n.org/m17n-lib-download/%{name}-%{version}.tar.gz
-Patch0:    m17n-lib-1.5.5-drop-versioninfo-from-module.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:        %{libname} = %{version}
 
@@ -29,14 +28,18 @@ Requires:        fonts-ttf-freefont
 Requires:        m17n-db >= %{m17n_db_version}
 Requires:        libotf >= %{libotf_version}
 BuildRequires:   m17n-db-devel >= %{m17n_db_version}
-BuildRequires:   automake
-BuildRequires:   libxml2-devel, X11-devel
-BuildRequires:   freetype2-static-devel
-BuildRequires:   libgd-static-devel >= 2.0
-BuildRequires:   libjpeg-static-devel
+BuildRequires:   libthai-devel
+BuildRequires:   libxml2-devel
+BuildRequires:	 fontconfig-devel
+BuildRequires:	 libx11-devel
+BuildRequires:	 libxaw-devel
+BuildRequires:	 libxft-devel
+BuildRequires:	 libxt-devel
+BuildRequires:	 gd-devel
+BuildRequires:	 fribidi-devel
+BuildRequires:   freetype2-devel
 BuildRequires:   anthy-devel >= 6300d
 BuildRequires:   libotf-devel >= %{libotf_version}
-BuildRequires:   libfribidi-devel
 # (tv) for AM_GNU_GETTEXT:
 BuildRequires:   gettext-devel
 
@@ -66,15 +69,16 @@ Headers of %{name} for development.
 
 %prep
 %setup -q -n %name-%version
-%patch0 -p0
 
 %build
-%configure2_5x
+%configure2_5x --disable-static
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
+
+rm -f %buildroot%_libdir/m17n/*/*.la
 
 # multiarch policy
 %multiarch_binaries $RPM_BUILD_ROOT%{_bindir}/m17n-config
@@ -97,24 +101,17 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/m17n-dump
 %{_bindir}/m17n-edit
 %{_bindir}/m17n-view
+%{_libdir}/m17n/*/*.so
 
 %files -n %{libname}
 %defattr(-,root,root)
 %{_libdir}/libm17n*.so.%{major}*
-%{_libdir}/libm17n-X.so
-%{_libdir}/libm17n-gd.so
-%{_libdir}/libmimx-anthy.so
-%{_libdir}/libmimx-ispell.so
 
 %files -n %{develname}
 %defattr(-,root,root)
 %{_bindir}/m17n-config
 %multiarch %{multiarch_bindir}/m17n-config
 %{_includedir}/*
-%{_libdir}/lib*.a
 %{_libdir}/lib*.la
-%{_libdir}/libm17n.so
-%{_libdir}/libm17n-core.so
-%{_libdir}/libm17n-flt.so
-%{_libdir}/libm17n-gui.so
+%{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*
