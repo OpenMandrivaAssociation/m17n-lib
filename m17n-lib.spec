@@ -28,7 +28,7 @@ Requires:        fonts-ttf-freefont
 Requires:        m17n-db >= %{m17n_db_version}
 Requires:        libotf >= %{libotf_version}
 BuildRequires:   m17n-db-devel >= %{m17n_db_version}
-BuildRequires:   libthai-devel
+BuildRequires:   thai-devel
 BuildRequires:   libxml2-devel
 BuildRequires:	 fontconfig-devel
 BuildRequires:	 libx11-devel
