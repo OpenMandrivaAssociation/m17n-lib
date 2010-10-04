@@ -1,5 +1,5 @@
 %define version	1.6.2
-%define release	%mkrel -c RC 1
+%define release	%mkrel 1
 
 %define m17n_db_version   1.5.1
 %define libotf_version    0.9.5
@@ -15,7 +15,7 @@ Release:   %{release}
 Group:     System/Internationalization
 License:   LGPLv2+
 URL:       http://www.m17n.org/m17n-lib/index.html
-Source0:   http://www.m17n.org/m17n-lib-download/%{name}-%{version}RC.tar.gz
+Source0:   http://www.m17n.org/m17n-lib-download/%{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:        %{libname} = %{version}
 
@@ -68,7 +68,7 @@ Obsoletes:  %{_lib}m17n-lib0-devel
 Headers of %{name} for development.
 
 %prep
-%setup -q -n %{name}-%{version}RC
+%setup -q -n %{name}-%{version}
 
 %build
 %configure2_5x --disable-static
