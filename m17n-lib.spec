@@ -16,6 +16,7 @@ Group:     System/Internationalization
 License:   LGPLv2+
 URL:       http://www.m17n.org/m17n-lib/index.html
 Source0:   http://www.m17n.org/m17n-lib-download/%{name}-%{version}.tar.gz
+Patch0:    m17n-lib-1.6.2-fix-build.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:        %{libname} = %{version}
 
@@ -69,6 +70,7 @@ Headers of %{name} for development.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0 -p0
 
 %build
 %configure2_5x --disable-static
