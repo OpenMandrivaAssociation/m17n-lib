@@ -1,5 +1,5 @@
 %define version	1.6.2
-%define release	%mkrel 1
+%define release	%mkrel 2
 
 %define m17n_db_version   1.5.1
 %define libotf_version    0.9.5
@@ -112,7 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n %{develname}
 %defattr(-,root,root)
 %{_bindir}/m17n-config
-%multiarch %{multiarch_bindir}/m17n-config
+%{multiarch_bindir}/m17n-config
 %{_includedir}/*
 %{_libdir}/lib*.la
 %{_libdir}/lib*.so
