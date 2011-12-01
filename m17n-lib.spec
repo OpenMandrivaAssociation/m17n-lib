@@ -77,16 +77,16 @@ Headers of %{name} for development.
 make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std
 
 rm -f %buildroot%_libdir/m17n/*/*.la
 
 # multiarch policy
-%multiarch_binaries $RPM_BUILD_ROOT%{_bindir}/m17n-config
+%multiarch_binaries %{buildroot}%{_bindir}/m17n-config
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
