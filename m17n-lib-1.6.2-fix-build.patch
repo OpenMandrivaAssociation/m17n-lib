@@ -1,0 +1,21 @@
+--- example/Makefile.am.orig	2010-10-04 15:52:09.000000000 +0200
++++ example/Makefile.am	2010-10-04 15:54:26.000000000 +0200
+@@ -32,6 +32,8 @@
+ bin_PROGRAMS = $(BASICPROGS)
+ endif
+ 
++INCLUDES = -I$(top_srcdir)/src
++
+ common_ldflags = ${top_builddir}/src/libm17n-core.la ${top_builddir}/src/libm17n.la
+ common_ldflags_gui = ${common_ldflags} ${top_builddir}/src/libm17n-flt.la ${top_builddir}/src/libm17n-gui.la
+ AM_CPPFLAGS=@CONFIG_FLAGS@
+--- example/Makefile.in.orig	2010-10-04 15:54:38.000000000 +0200
++++ example/Makefile.in	2010-10-04 15:54:58.000000000 +0200
+@@ -149,6 +149,7 @@
+ m17n_view_OBJECTS = $(am_m17n_view_OBJECTS)
+ m17n_view_DEPENDENCIES = $(am__DEPENDENCIES_3) $(am__DEPENDENCIES_1)
+ DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
++INCLUDES = -I$(top_srcdir)/src
+ depcomp = $(SHELL) $(top_srcdir)/depcomp
+ am__depfiles_maybe = depfiles
+ am__mv = mv -f
