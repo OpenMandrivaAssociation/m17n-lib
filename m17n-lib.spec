@@ -1,5 +1,5 @@
 %define version	1.6.3
-%define release	1
+%define release	2
 
 %define m17n_db_version   1.5.1
 %define libotf_version    0.9.5
@@ -36,7 +36,7 @@ BuildRequires:	 libxft-devel
 BuildRequires:	 libxt-devel
 BuildRequires:	 gd-devel
 BuildRequires:	 fribidi-devel
-BuildRequires:   freetype2-devel
+BuildRequires:   freetype-devel
 BuildRequires:   anthy-devel >= 6300d
 BuildRequires:   libotf-devel >= %{libotf_version}
 # (tv) for AM_GNU_GETTEXT:
