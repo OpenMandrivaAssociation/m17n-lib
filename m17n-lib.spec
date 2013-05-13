@@ -28,17 +28,17 @@ Requires:        m17n-db >= %{m17n_db_version}
 Requires:        libotf >= %{libotf_version}
 BuildRequires:   m17n-db-devel >= %{m17n_db_version}
 BuildRequires:   thai-devel
-BuildRequires:   libxml2-devel
+BuildRequires:   pkgconfig(libxml-2.0)
 BuildRequires:	 fontconfig-devel
-BuildRequires:	 libx11-devel
-BuildRequires:	 libxaw-devel
-BuildRequires:	 libxft-devel
-BuildRequires:	 libxt-devel
+BuildRequires:	 pkgconfig(x11)
+BuildRequires:	 pkgconfig(xaw7)
+BuildRequires:	 pkgconfig(xft)
+BuildRequires:	 pkgconfig(xt)
 BuildRequires:	 gd-devel
 BuildRequires:	 fribidi-devel
 BuildRequires:   freetype-devel
 BuildRequires:   anthy-devel >= 6300d
-BuildRequires:   libotf-devel >= %{libotf_version}
+BuildRequires:   pkgconfig(libotf) >= %{libotf_version}
 # (tv) for AM_GNU_GETTEXT:
 BuildRequires:   gettext-devel
 
