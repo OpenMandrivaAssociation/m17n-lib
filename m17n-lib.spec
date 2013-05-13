@@ -1,5 +1,5 @@
 %define version	1.6.3
-%define release	2
+%define release 	3
 
 %define m17n_db_version   1.5.1
 %define libotf_version    0.9.5
