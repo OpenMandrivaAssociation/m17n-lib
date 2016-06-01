@@ -1,4 +1,2 @@
-removed_sources:
-  m17n-lib-1.6.3.tar.gz: b3a725b1c417f167f6b2c6b7889b7d728a1e6b8f
 sources:
-  m17n-lib-1.6.4.tar.gz: 83f2fc4facfd70a580bb95d9381eac7472d85171
+  m17n-lib-1.7.0.tar.gz: 6ebc98680ffb575c5f58190f054d60fdb8b0f301
