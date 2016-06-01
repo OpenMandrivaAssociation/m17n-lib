@@ -7,8 +7,8 @@
 
 Summary:	Multilingual text processing library
 Name:		m17n-lib
-Version:	1.6.4
-Release:	10
+Version:	1.7.0
+Release:	1
 Group:		System/Internationalization
 License:	LGPLv2+
 Url:		http://www.m17n.org/m17n-lib/index.html
@@ -87,9 +87,8 @@ Headers of %{name} for development.
 %setup -q
 
 %build
-%configure2_5x --disable-static
-# -j8 broken as of 1.6.4
-make
+%configure --disable-static
+%make
 
 %install
 %makeinstall_std
@@ -124,4 +123,3 @@ make
 %{_includedir}/*
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*
-
