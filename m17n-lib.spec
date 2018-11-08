@@ -84,17 +84,14 @@ Provides:	%{name}-devel = %{version}-%{release}
 Headers of %{name} for development.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --disable-static
-%make -j1
+%make_build -j1
 
 %install
-%makeinstall_std
-
-# multiarch policy
-%multiarch_binaries %{buildroot}%{_bindir}/m17n-config
+%make_install
 
 %files
 %doc AUTHORS ChangeLog NEWS README
@@ -119,7 +116,6 @@ Headers of %{name} for development.
 
 %files -n %{devname}
 %{_bindir}/m17n-config
-%{multiarch_bindir}/m17n-config
 %{_includedir}/*
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*
