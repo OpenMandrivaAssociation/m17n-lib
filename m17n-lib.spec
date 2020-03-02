@@ -7,8 +7,8 @@
 
 Summary:	Multilingual text processing library
 Name:		m17n-lib
-Version:	1.7.0
-Release:	3
+Version:	1.8.0
+Release:	1
 Group:		System/Internationalization
 License:	LGPLv2+
 Url:		http://www.m17n.org/m17n-lib/index.html
@@ -115,7 +115,7 @@ Headers of %{name} for development.
 %{_libdir}/libm17n-gui.so.%{major}*
 
 %files -n %{devname}
-%{_bindir}/m17n-config
+#%{_bindir}/m17n-config
 %{_includedir}/*
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*
