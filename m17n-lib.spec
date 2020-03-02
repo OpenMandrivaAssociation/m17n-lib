@@ -115,7 +115,7 @@ Headers of %{name} for development.
 %{_libdir}/libm17n-gui.so.%{major}*
 
 %files -n %{devname}
-%{_bindir}/m17n-config
+#%{_bindir}/m17n-config
 %{_includedir}/*
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*
