@@ -7,7 +7,7 @@
 
 Summary:	Multilingual text processing library
 Name:		m17n-lib
-Version:	1.8.3
+Version:	1.8.4
 Release:	1
 Group:		System/Internationalization
 License:	LGPLv2+
