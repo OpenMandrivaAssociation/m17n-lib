@@ -14,6 +14,11 @@ License:	LGPLv2+
 Url:		https://www.m17n.org/m17n-lib/index.html
 Source0:	http://savannah.c3sl.ufpr.br//m17n/m17n-lib-%{version}.tar.gz
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	gd-devel
 BuildRequires:	gettext-devel
 BuildRequires:	pkgconfig(anthy) >= 6300d
