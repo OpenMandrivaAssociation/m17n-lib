@@ -7,12 +7,16 @@
 
 Summary:	Multilingual text processing library
 Name:		m17n-lib
-Version:	1.8.6
+Version:	1.8.7
 Release:	1
 Group:		System/Internationalization
 License:	LGPLv2+
 Url:		https://www.m17n.org/m17n-lib/index.html
-Source0:	http://savannah.c3sl.ufpr.br//m17n/m17n-lib-%{version}.tar.gz
+Source0:	https://download.savannah.gnu.org/releases/m17n/m17n-lib-%{version}.tar.gz
+# input.c calls dlopen, but configure.ac never checks for dlfcn.h
+Patch0:		m17n-lib-1.8.7-dlfcn.patch
+# PKG_CHECK_MODULES sets $FREETYPE_LIBS; the bare name was passed to the linker
+Patch1:		m17n-lib-1.8.7-freetype-libs.patch
 
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -93,10 +97,10 @@ Headers of %{name} for development.
 
 %build
 %configure --disable-static
-%make_build -j1
+%make_build -j1 LIBTOOL=slibtool-shared
 
 %install
-%make_install
+%make_install LIBTOOL=slibtool-shared
 
 %files
 %doc AUTHORS ChangeLog NEWS README
@@ -104,6 +108,7 @@ Headers of %{name} for development.
 %{_bindir}/m17n-date
 %{_bindir}/m17n-dump
 %{_bindir}/m17n-edit
+%{_bindir}/m17n-input-test
 %{_bindir}/m17n-view
 %{_libdir}/m17n/*/*.so
 

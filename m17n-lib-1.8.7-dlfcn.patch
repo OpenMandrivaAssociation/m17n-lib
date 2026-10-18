@@ -1,0 +1,14 @@
+input.c calls dlopen when HAVE_DLOPEN is set, but only includes
+dlfcn.h when HAVE_DLFCN_H is set. configure.ac never checks for that header.
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -60,7 +60,7 @@
+ AC_HEADER_DIRENT
+ 
+ AC_CHECK_HEADERS([fcntl.h langinfo.h limits.h locale.h stdlib.h \
+-			  string.h strings.h sys/time.h unistd.h])
++			  string.h strings.h sys/time.h unistd.h dlfcn.h])
+ AC_CHECK_HEADER(X11/Xaw/Command.h, HAVE_XAW=yes)
+ 
+ dnl Checks for typedefs, structures, and compiler characteristics.
